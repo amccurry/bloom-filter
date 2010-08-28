@@ -1,4 +1,15 @@
-package testing;
+Bloom Filter
+
+This implementation of Bloom Filter is written in java, and uses a murmur hash.  The class is a generic that requires a ToBytes
+object for converting your keys into byte arrays.  However if you already have byte array values that you wish to add to the
+bloom filter, there are methods that except and test byte arrays with offsets and lengths so that you can reuse your byte buffers.
+
+Thread safety, by default this bloom filter is thread safe through the use of AtomicLongArray.  However if your implementation does
+not require thread safety you may relax this feature in the constructor.  Note: In testing I haven't seen any difference in performance
+in using the AtomicLongArray over the standard long array implementation.
+
+Below is a simple example of how to use this class.
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
