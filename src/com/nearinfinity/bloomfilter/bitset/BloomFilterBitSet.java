@@ -20,6 +20,9 @@ package com.nearinfinity.bloomfilter.bitset;
 
 import java.io.Serializable;
 
+/**
+ * @author Aaron McCurry (amccurry@nearinfinity.com)
+ */
 public abstract class BloomFilterBitSet implements Serializable {
 
 	private static final long serialVersionUID = 4996367504350124396L;

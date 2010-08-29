@@ -20,6 +20,10 @@ package com.nearinfinity.bloomfilter;
 
 import java.io.Serializable;
 
+/**
+ * Turns a key into bytes.
+ * @author Aaron McCurry (amccurry@nearinfinity.com)
+ */
 public interface ToBytes<T> extends Serializable {
 	
 	/**

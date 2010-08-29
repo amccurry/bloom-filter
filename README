@@ -2,8 +2,8 @@ Bloom Filter
 
 This implementation of Bloom Filter is written in java, and uses a murmur hash.  The class 
 is a java generic class that requires a ToBytes object for converting your keys into byte 
-arrays.  However if you already have byte array values that you wish to add them to the bloom 
-filter, there are methods that except and test byte arrays with offsets and lengths so 
+arrays.  However if you already have byte array keys that you wish to use them with the bloom 
+filter.  There are methods that except and test byte arrays with offsets and lengths so 
 that you can reuse your byte array buffers.
 
 Thread Safety

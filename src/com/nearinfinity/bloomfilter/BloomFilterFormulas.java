@@ -17,6 +17,10 @@
 
 package com.nearinfinity.bloomfilter;
 
+/**
+ * Provides some useful methods for estimating memory usage, optimal hashes, etc.
+ * @author Aaron McCurry (amccurry@nearinfinity.com)
+ */
 public abstract class BloomFilterFormulas {
 	
 	/**

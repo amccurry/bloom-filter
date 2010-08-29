@@ -20,6 +20,11 @@ package com.nearinfinity.bloomfilter.bitset;
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicLongArray;
 
+/**
+ * A thread safe implementation of a bit set.  Uses {@link AtomicLongArray} for
+ * thread safety, by using compare and swap.
+ * @author Aaron McCurry (amccurry@nearinfinity.com)
+ */
 public class ThreadSafeBitSet extends BloomFilterBitSet implements Cloneable, Serializable {
 	private static final long serialVersionUID = -7595377654535919085L;
 	

@@ -29,7 +29,7 @@ import com.nearinfinity.bloomfilter.bitset.ThreadUnsafeBitSet;
  * This is a simple implementation of a bloom filter, it uses a chain of murmur
  * hashes to create the bloom filter.
  * 
- * @author amccurry@nearinfinity.com
+ * @author Aaron McCurry (amccurry@nearinfinity.com)
  */
 public class BloomFilter<T> extends BloomFilterFormulas implements Serializable {
 	
@@ -118,6 +118,7 @@ public class BloomFilter<T> extends BloomFilterFormulas implements Serializable 
 			setBitSet(hash);
 			bs[0]++;
 		}
+		bs[0] -= hashes; //reset to original value
 	}
 
 	/**
@@ -130,10 +131,12 @@ public class BloomFilter<T> extends BloomFilterFormulas implements Serializable 
 		for (int i = 0; i < hashes; i++) {
 			int hash = MurmurHash.hash(seed, bs, offset, length);
 			if (!testBitSet(hash)) {
+				bs[0] -= i; //reset to original value
 				return false;
 			}
 			bs[0]++;
 		}
+		bs[0] -= hashes; //reset to original value
 		return true;
 	}
 	
@@ -153,12 +156,14 @@ public class BloomFilter<T> extends BloomFilterFormulas implements Serializable 
 	private boolean testInternal(byte[] key) {
 		byte[] bs = key;
 		for (int i = 0; i < hashes; i++) {
-			int hash = MurmurHash.hash(seed, bs, 0, bs.length);
+			int hash = MurmurHash.hash(seed, bs, bs.length);
 			if (!testBitSet(hash)) {
+				bs[0] -= i; //reset to original value
 				return false;
 			}
 			bs[0]++;
 		}
+		bs[0] -= hashes; //reset to original value
 		return true;
 	}
 	
@@ -169,10 +174,11 @@ public class BloomFilter<T> extends BloomFilterFormulas implements Serializable 
 	private void addInternal(byte[] key) {
 		byte[] bs = key;
 		for (int i = 0; i < hashes; i++) {
-			int hash = MurmurHash.hash(seed, bs, 0, bs.length);
+			int hash = MurmurHash.hash(seed, bs, bs.length);
 			setBitSet(hash);
 			bs[0]++;
 		}
+		bs[0] -= hashes; //reset to original value
 	}
 
 	/**

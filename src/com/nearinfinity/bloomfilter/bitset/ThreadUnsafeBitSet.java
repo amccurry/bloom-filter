@@ -19,6 +19,10 @@ package com.nearinfinity.bloomfilter.bitset;
 
 import java.io.Serializable;
 
+/**
+ * Normal bit set that uses long as words.
+ * @author Aaron McCurry (amccurry@nearinfinity.com)
+ */
 public class ThreadUnsafeBitSet extends BloomFilterBitSet implements Cloneable, Serializable {
 	private static final long serialVersionUID = -3501250921524429562L;
 
