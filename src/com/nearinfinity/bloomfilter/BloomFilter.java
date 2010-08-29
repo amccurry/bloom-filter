@@ -36,16 +36,6 @@ public class BloomFilter<T> extends BloomFilterFormulas implements Serializable 
 	private static final long serialVersionUID = -4837894658242080928L;
 	private static final int seed = 1;
 	
-	public interface ToBytes<T> extends Serializable {
-		
-		/**
-		 * Turn the given keys into bytes.
-		 * @param key the key.
-		 * @return bytes that represent the key.
-		 */
-		byte[] toBytes(T key);
-	}
-	
 	private BloomFilterBitSet bitSet;
 	private ToBytes<T> toBytes;
 	private long numberOfBitsDivBy2;
